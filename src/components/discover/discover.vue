@@ -20,7 +20,7 @@
            :key="index">
         <img :src="item.uiElement.image.imageUrl"
              class="recommandImg"
-             @click="showList">
+             @click="showList(item)">
         <span>{{item.uiElement.mainTitle.title}}</span>
       </div>
     </div>
@@ -60,7 +60,8 @@ export default {
       //const { data: res } = await this.$http.get('/playlist/detail?id=5100698746')
       //console.log(res)
     },
-    showList () {
+    showList (item) {
+      this.$store.commit('setNewListId', item.creativeId)
       this.$router.push('/list')
     }
   }
