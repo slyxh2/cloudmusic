@@ -15,7 +15,8 @@
       <van-col span="2">
         <van-icon name="play-circle-o"
                   class="mv-play"
-                  v-if="item.songs[0].mv" />
+                  v-if="item.songs[0].mv"
+                  @click="playMV(item.songs[0].mv)" />
       </van-col>
 
     </van-row>
@@ -41,6 +42,10 @@ export default {
         this.songInf.push(result)
       })
       console.log(this.songInf)
+    },
+    playMV (MVId) {
+      this.$store.commit('setNewMVId', MVId)
+      this.$router.push('/video')
     }
   }
 }
