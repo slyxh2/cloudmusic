@@ -24,11 +24,22 @@
         <span>{{item.uiElement.mainTitle.title}}</span>
       </div>
     </div>
+    <!-- 独家放送 -->
+    <div class="small-title">
+      <span style="color: #717ff9; font-size: 1.2em">独家放送</span>
+      <van-icon name="arrow"
+                color="#717ff9" />
+    </div>
+    <special></special>
   </div>
 </template>
 
 <script>
+import special from './special.vue'
 export default {
+  components: {
+    'special': special
+  },
   mounted () {
     this.getImg()
   },
@@ -50,15 +61,6 @@ export default {
         this.swipeImg.push(el.pic)
       })
       this.recommandList = result.data.blocks[1].creatives
-      //console.log(this.recommandList)
-      // result.data.blocks[1].creatives.forEach(el => {
-      //   this.recommandImg.push(el.uiElement.image.imageUrl)
-      // })
-      //console.log(this.recommandList)
-      //console.log(result.data.blocks[1])
-      // 请求歌单详情
-      //const { data: res } = await this.$http.get('/playlist/detail?id=5100698746')
-      //console.log(res)
     },
     showList (item) {
       this.$store.commit('setNewListId', item.creativeId)
@@ -76,6 +78,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-between;
+  padding: 0 0 3em 0;
 }
 .samll-title {
   display: inline-block;

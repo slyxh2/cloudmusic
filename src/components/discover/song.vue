@@ -41,7 +41,7 @@ export default {
         const { data: result } = await this.$http.get(`/song/detail?ids=${item.id}`)
         this.songInf.push(result)
       })
-      console.log(this.songInf)
+      //console.log(this.songInf)
     },
     playMV (MVId) {
       this.$store.commit('setNewMVId', MVId)
