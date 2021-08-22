@@ -9,7 +9,7 @@
         <div>{{specialList[1].name}}</div>
       </van-col>
       <van-col span="11"
-               offset="2"
+               offset="1"
                v-if="specialList[2]"
                @click="handleClick(specialList[2])">
         <img :src="specialList[2].picUrl"
@@ -17,7 +17,7 @@
         <div>{{specialList[2].name}}</div>
       </van-col>
     </van-row>
-    <van-row>
+    <van-row v-if="specialList[0]">
       <van-col span="24"
                @click="handleClick(specialList[0])">
         <img :src="specialList[0].picUrl"
@@ -42,7 +42,7 @@ export default {
     async getSpecialList () {
       const { data: result } = await this.$http.get('/personalized/privatecontent')
       this.specialList = result.result
-      console.log(result)
+      //console.log(result)
     },
     handleClick (item) {
       this.$store.commit('setNewMVId', item.id)
@@ -54,6 +54,7 @@ export default {
 
 <style lang="less" scoped>
 #special {
+  width: 100%;
   padding: 0 0 5em 0;
 }
 .small-img {
@@ -61,7 +62,7 @@ export default {
   height: 15vh;
 }
 .big-img {
-  width: 100vw;
+  width: 100%;
   height: 20vh;
 }
 </style>

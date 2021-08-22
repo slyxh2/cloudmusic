@@ -3,10 +3,12 @@
     <van-row class="song-block"
              v-for="(item, index) in songInf"
              :key="index">
-      <van-col span="2">
+      <van-col span="2"
+               @click="playSong(item, index)">
         <span class="count">{{index + 1}}</span>
       </van-col>
-      <van-col span="20">
+      <van-col span="20"
+               @click="playSong(item, index)">
         <div class="song-container">
           <span v-if="item.songs">{{item.songs[0].name}}</span>
           <sub class="sub-name">{{item.songs[0].ar[0].name}}-{{item.songs[0].al.name}}</sub>
@@ -29,7 +31,8 @@ export default {
   props: ["songList"],
   data () {
     return {
-      songInf: []
+      songInf: [],
+      idList: []
     }
   },
   created () {
@@ -38,14 +41,23 @@ export default {
   methods: {
     getSong () {
       this.songList.forEach(async item => {
+        this.idList.push(item.id)
         const { data: result } = await this.$http.get(`/song/detail?ids=${item.id}`)
         this.songInf.push(result)
       })
-      //console.log(this.songInf)
     },
     playMV (MVId) {
       this.$store.commit('setNewMVId', MVId)
+      window.sessionStorage.setItem('MVId', this.$store.getters.getMVId)
       this.$router.push('/video')
+    },
+    playSong (song, index) {
+      this.$store.commit('setSongId', song.songs[0].id)
+      //window.sessionStorage.setItem('songId', song.songs[0].id)
+      this.$store.commit('setSongList', this.idList)
+      this.$store.commit('setSongIndex', index)
+
+      this.$router.push('/player')
     }
   }
 }

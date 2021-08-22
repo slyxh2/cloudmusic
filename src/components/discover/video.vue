@@ -55,8 +55,8 @@ export default {
   },
   computed: {
     MVId: function () {
-      return this.$store.getters.getMVId
-      console.log(this.$store.getters.getMVId)
+      return window.sessionStorage.getItem('MVId')
+      //console.log(this.$store.getters.getMVId)
     }
   },
   methods: {
@@ -75,11 +75,12 @@ export default {
     playMV (MVId) {
       //console.log(MVId)
       this.$store.commit('setNewMVId', MVId)
+      window.sessionStorage.setItem('MVId', MVId)
       //console.log('22')
-      //this.$router.go(0)
+      this.$router.go(0)
     },
     handleClick () {
-      this.$router.go(-1)
+      this.$router.push('/list')
     }
   }
 }

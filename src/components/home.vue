@@ -10,7 +10,8 @@
       <template #right>
         <van-icon name="bullhorn-o"
                   size="20"
-                  color="#fff" />
+                  color="#fff"
+                  @click="goPlayer" />
       </template>
       <template #title>
         <h3 style="color: #fff">茗 心 云 音 乐</h3>
@@ -18,6 +19,7 @@
     </van-nav-bar>
     <main>
       <router-view></router-view>
+
     </main>
     <!-- 页尾 -->
     <van-tabbar v-model="active"
@@ -51,6 +53,9 @@ export default {
     handelChange () {
       window.sessionStorage.setItem('activeIndex', this.active)
     },
+    goPlayer () {
+      this.$router.push('/player')
+    }
   }
 }
 </script>

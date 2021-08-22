@@ -6,6 +6,7 @@ import {button, NavBar, Toast, Icon, Field, Grid, GridItem, Tabbar, TabbarItem, 
 import 'vant/lib/index.less'
 import axios from 'axios'
 import Store from './store/index.js'
+import '../src/assets/css/global.css'
 
 Vue.use(button)
 Vue.use(NavBar)

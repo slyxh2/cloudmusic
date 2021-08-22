@@ -31,12 +31,14 @@
                 color="#717ff9" />
     </div>
     <special></special>
+    <router-view name="player"></router-view>
   </div>
 </template>
 
 <script>
 import special from './special.vue'
 export default {
+  name: 'discover',
   components: {
     'special': special
   },
@@ -64,6 +66,7 @@ export default {
     },
     showList (item) {
       this.$store.commit('setNewListId', item.creativeId)
+      window.sessionStorage.setItem('listId', this.$store.getters.getListId)
       this.$router.push('/list')
     }
   }

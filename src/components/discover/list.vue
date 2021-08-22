@@ -3,7 +3,8 @@
     <!-- 歌单开头部分 -->
     <div class="top-body">
       <div class="bg bg-blur"
-           :style="{backgroundImage: 'url(' + listInf.playlist.coverImgUrl + ')' }"></div>
+           :style="{backgroundImage: 'url(' + listInf.playlist.coverImgUrl + ')' }"
+           v-if="listInf"></div>
       <div class="top-main">
         <nav class="nav-bar">
           <van-icon name="arrow-left"
@@ -37,6 +38,7 @@
 <script>
 import song from './song.vue'
 export default {
+  name: 'list',
   components: {
     'song-list': song
   },
@@ -59,12 +61,12 @@ export default {
       //console.log(this.songInf)
     },
     goBack () {
-      this.$router.go(-1)
+      this.$router.push('/discover')
     }
   },
   computed: {
     listId: function () {
-      return this.$store.getters.getListId
+      return window.sessionStorage.getItem('listId')
     }
   }
 }
@@ -95,7 +97,8 @@ export default {
 .bg-blur {
   float: left;
   width: 100%;
-  background-size: cover;
+  //background-size: cover;
+  background-size: 150% 150%;
   filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
 }
