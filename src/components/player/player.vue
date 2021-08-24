@@ -4,14 +4,16 @@
     <audio controls="controls"
            id="player"
            :src="songURL"
-           autoplay
            @timeupdate="timeUpdate"></audio>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'player',
+  updated () {
+    var player = document.getElementById('player')
+    player.play()
+  },
   computed: {
     isPlay () {
       return this.$store.getters.getPlayState

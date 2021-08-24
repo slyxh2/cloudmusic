@@ -45,7 +45,8 @@ export default {
       //console.log(result)
     },
     handleClick (item) {
-      this.$store.commit('setNewMVId', item.id)
+      //this.$store.commit('setNewMVId', item.id)
+      window.sessionStorage.setItem('MVId', item.id)
       this.$router.push('/video')
     }
   }

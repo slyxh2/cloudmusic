@@ -26,9 +26,9 @@
                 ref="barRef"
                 @change="handelChange">
       <van-tabbar-item icon="home-o"
-                       to="/discover">关于作者</van-tabbar-item>
+                       to="/discover">发现音乐</van-tabbar-item>
       <van-tabbar-item icon="search"
-                       to="/music">发现音乐</van-tabbar-item>
+                       to="/search">搜索</van-tabbar-item>
       <van-tabbar-item icon="setting-o"
                        to="/user">帐号</van-tabbar-item>
     </van-tabbar>

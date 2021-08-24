@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import 'vant/lib/index.css'
-import {button, NavBar, Toast, Icon, Field, Grid, GridItem, Tabbar, TabbarItem, Form, Swipe, SwipeItem, Lazyload, Loading, Col, Row  } from 'vant'
+import {button, NavBar, Toast, Icon, Field, Grid, GridItem, Tabbar, TabbarItem, Form, Swipe, SwipeItem, Lazyload, Loading, Col, Row, Search, Tag  } from 'vant'
 import 'vant/lib/index.less'
 import axios from 'axios'
 import Store from './store/index.js'
@@ -24,6 +24,8 @@ Vue.use(Lazyload)
 Vue.use(Loading)
 Vue.use(Col)
 Vue.use(Row)
+Vue.use(Search)
+Vue.use(Tag)
 
 axios.defaults.baseURL = 'http://localhost:3000'
 Vue.prototype.$http = axios

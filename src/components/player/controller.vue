@@ -56,6 +56,7 @@
 import bar from './progress-bar.vue'
 
 export default {
+  name: 'player',
   components: {
     'progress-bar': bar
   },

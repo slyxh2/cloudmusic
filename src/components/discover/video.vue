@@ -80,7 +80,7 @@ export default {
       this.$router.go(0)
     },
     handleClick () {
-      this.$router.push('/list')
+      this.$router.go(-1)
     }
   }
 }

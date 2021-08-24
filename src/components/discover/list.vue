@@ -4,7 +4,7 @@
     <div class="top-body">
       <div class="bg bg-blur"
            :style="{backgroundImage: 'url(' + listInf.playlist.coverImgUrl + ')' }"
-           v-if="listInf"></div>
+           v-if="listInf.playlist.coverImgUrl"></div>
       <div class="top-main">
         <nav class="nav-bar">
           <van-icon name="arrow-left"
@@ -12,10 +12,12 @@
                     @click="goBack" />
           <div>歌 单</div>
           <van-icon name="bullhorn-o"
-                    class="right-icon" />
+                    class="right-icon"
+                    @click="goPlayer" />
         </nav>
         <div class="information">
           <img class="list-image"
+               v-if="listInf.playlist.coverImgUrl"
                :src="listInf.playlist.coverImgUrl">
           <div class="details">
             {{listInf.playlist.name}}
@@ -39,11 +41,28 @@
 import song from './song.vue'
 export default {
   name: 'list',
+  beforeRouteEnter (to, from, next) {
+    //console.log(this.$route.meta)
+    if (from.name === 'player') {
+      to.meta.isBack = true
+      //console.log('22')
+    }
+    next()
+  },
+  activated () {
+    //console.log('acs')
+    if (!this.$route.meta.isBack) {
+      //console.log('22')
+      this.getListInf()
+    }
+    this.$route.meta.isBack = false
+  },
   components: {
     'song-list': song
   },
   created () {
     this.getListInf()
+    //console.log('created')
   },
   data () {
     return {
@@ -62,6 +81,9 @@ export default {
     },
     goBack () {
       this.$router.push('/discover')
+    },
+    goPlayer () {
+      this.$router.push('/player')
     }
   },
   computed: {
