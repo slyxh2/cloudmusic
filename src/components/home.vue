@@ -18,8 +18,9 @@
       </template>
     </van-nav-bar>
     <main>
-      <router-view></router-view>
-
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </main>
     <!-- 页尾 -->
     <van-tabbar v-model="active"
@@ -37,6 +38,9 @@
 
 <script>
 export default {
+  created () {
+    console.log('home')
+  },
   updated () {
     if (window.sessionStorage.getItem('activeIndex')) {
       this.active = parseInt(window.sessionStorage.getItem('activeIndex'))

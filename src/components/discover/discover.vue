@@ -31,7 +31,6 @@
                 color="#717ff9" />
     </div>
     <special></special>
-    <router-view name="player"></router-view>
   </div>
 </template>
 
@@ -39,8 +38,15 @@
 import special from './special.vue'
 export default {
   name: 'discover',
+  activated () {
+    //console.log('acs')
+  },
   components: {
     'special': special
+  },
+  created () {
+    this.isFirstEnter = true
+    console.log('created')
   },
   mounted () {
     this.getImg()
@@ -49,7 +55,8 @@ export default {
     return {
       homeInf: {},
       swipeImg: [],
-      recommandList: []
+      recommandList: [],
+      isFirstEnter: false
     }
   },
   methods: {

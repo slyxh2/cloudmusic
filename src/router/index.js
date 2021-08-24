@@ -12,11 +12,14 @@ Vue.use(VueRouter)
 
 const routes = [
   {path: '/', redirect: '/login'},
-  {path: '/home', component: home, redirect: '/discover', children: [{path: '/discover', component: discover, name: 'discover', meta:{keepAlive: false}}, 
-  {path: '/search', component: search}]},
-  {path: '/login', component: login, meta:{keepAlive: false}}, 
+
+  {path: '/home', component: home, redirect: '/discover', name: 'home', meta:{keepAlive: true},
+  children: [{path: '/discover', component: discover, name: 'discover', meta:{keepAlive: true, isBack: false}}, 
+  {path: '/search', component: search, name: 'search', meta:{keepAlive: true, isBack: false}}]},
+
+  {path: '/login', component: login, meta:{keepAlive: false}},
   {path: '/mobile', component: mobileLogin},
-  {path: '/list', component: list, meta:{keepAlive: true, isBack: false}}, 
+  {path: '/list', component: list, meta:{keepAlive: true, isBack: false, list: true}}, 
   {path: '/video', component: video},
   {path: '/player', component: player, name: 'player'}
 ]

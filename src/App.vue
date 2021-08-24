@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <keep-alive include="list">
-      <router-view v-if="$route.meta.keepAlive"
+    <keep-alive exclude="list">
+      <router-view v-if="$route.meta.keepAlive && !$route.meta.list"></router-view>
+    </keep-alive>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive && $route.meta.list"
                    :key="key"></router-view>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"></router-view>

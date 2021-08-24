@@ -53,8 +53,25 @@
 
 <script>
 export default {
+  name: 'search',
+  beforeRouteEnter (to, from, next) {
+    if (from.name === 'player') {
+      to.meta.isBack = true
+      console.log('player')
+    }
+    next()
+  },
+  activated () {
+    //console.log('acs')
+    if (!this.$route.meta.isBack) {
+      //console.log('22')
+      this.getHotSearch()
+    }
+    this.$route.meta.isBack = false
+  },
   created () {
     this.getHotSearch()
+    //console.log('22')
   },
   data () {
     return {
