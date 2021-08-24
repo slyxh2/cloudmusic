@@ -38,7 +38,7 @@ export default {
       const { data: result } = await this.$http.get('/personalized/mv')
       //console.log(result)
       this.mvList = result.result
-      console.log(this.mvList)
+      //console.log(this.mvList)
     },
     playMV (MVId) {
       this.$store.commit('setNewMVId', MVId)

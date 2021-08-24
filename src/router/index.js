@@ -8,6 +8,7 @@ import discover from '../components/discover/discover.vue'
 import list from '../components/discover/list.vue'
 import video from '../components/discover/video.vue'
 import player from '../components/player/controller.vue'
+import user from '../components/user/user.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,11 +16,12 @@ const routes = [
 
   {path: '/home', component: home, redirect: '/discover', name: 'home', meta:{keepAlive: true},
   children: [{path: '/discover', component: discover, name: 'discover', meta:{keepAlive: true, isBack: false}}, 
-  {path: '/search', component: search, name: 'search', meta:{keepAlive: true, isBack: false}}]},
+  {path: '/search', component: search, name: 'search', meta:{keepAlive: true, isBack: false}},
+  {path: '/user', component: user, name: 'user', meta:{keepAlive: true, isBack: true, ls: false}}]},
 
   {path: '/login', component: login, meta:{keepAlive: false}},
-  {path: '/mobile', component: mobileLogin},
-  {path: '/list', component: list, meta:{keepAlive: true, isBack: false, list: true}}, 
+  {path: '/mobile', component: mobileLogin, name:'mobile'},
+  {path: '/list', component: list, name: 'list', meta:{keepAlive: true, isBack: false, list: true}}, 
   {path: '/video', component: video},
   {path: '/player', component: player, name: 'player'}
 ]

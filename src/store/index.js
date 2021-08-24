@@ -14,7 +14,8 @@ export default new Vuex.Store({
     currentTime: 0,
     durationTime: '',
     isChanging: false,
-    newTime: 0
+    newTime: 0,
+    isLog: false
   },
   getters: {
     getListId(state){
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     getNewTime(state){
       return state.newTime
+    },
+    getLogState(state){
+      return state.isLog
     }
   },
   mutations: {
@@ -81,6 +85,12 @@ export default new Vuex.Store({
     },
     setNewTime(state, time){
       state.newTime = time
+    },
+    login(state){
+      state.isLog = true
+    },
+    logout(state){
+      state.isLog = false
     }
   }
 })

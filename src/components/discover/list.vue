@@ -72,15 +72,21 @@ export default {
   },
   methods: {
     async getListInf () {
-      const { data: result } = await this.$http.get(`/playlist/detail?id=${this.listId}`)
-      this.listInf = result
-      //console.log(this.listInf)
-      //this.getSongInf()
-      this.songInf = result.playlist.trackIds
-      //console.log(this.songInf)
+      if (this.cookie) {
+        const c = encodeURIComponent(this.cookie)
+        //const { data: result } = await this.$http.post(`/playlist/detail?cookie=${c}&id=${this.listId}`)
+        const { data: result } = await this.$http.get(`/playlist/detail?id=${this.listId}&cookie=${c}`)
+        //console.log(result)
+        this.listInf = result
+        this.songInf = result.playlist.trackIds
+      } else {
+        const { data: result } = await this.$http.get(`/playlist/detail?id=${this.listId}`)
+        this.listInf = result
+        this.songInf = result.playlist.trackIds
+      }
     },
     goBack () {
-      this.$router.push('/discover')
+      this.$router.go(-1)
     },
     goPlayer () {
       this.$router.push('/player')
@@ -89,6 +95,9 @@ export default {
   computed: {
     listId: function () {
       return window.sessionStorage.getItem('listId')
+    },
+    cookie: function () {
+      return window.sessionStorage.getItem('cookie')
     }
   }
 }

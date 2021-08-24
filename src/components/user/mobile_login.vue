@@ -32,6 +32,7 @@
 
 <script>
 export default {
+  name: 'mobile',
   data () {
     return {
       loginData: {
@@ -45,8 +46,12 @@ export default {
       this.$router.go(-1)
     },
     async handleSubmit () {
-      const result = await this.$http.post('/login/cellphone', this.loginData)
+      const result = await this.$http.get(`/login/cellphone?phone=${this.loginData.phone}&password=${this.loginData.password}`)
       console.log(result)
+      if (result.data.code !== 200) return this.$toast.fail('用户名或密码错误')
+      window.sessionStorage.setItem('cookie', result.data.cookie)
+      this.$store.commit('login')
+      this.$router.push('/user')
     }
   }
 }

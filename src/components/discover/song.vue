@@ -1,7 +1,7 @@
 <template>
   <div class="song-list">
     <van-row class="song-block"
-             v-for="(item, index) in songInf"
+             v-for="(item, index) in songInf.slice(0, 50)"
              :key="index">
       <van-col span="2"
                @click="playSong(item, index)">

@@ -57,7 +57,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     if (from.name === 'player') {
       to.meta.isBack = true
-      console.log('player')
+      //console.log('player')
     }
     next()
   },
