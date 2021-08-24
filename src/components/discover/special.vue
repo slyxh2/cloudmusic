@@ -56,7 +56,7 @@ export default {
 <style lang="less" scoped>
 #special {
   width: 100%;
-  padding: 0 0 5em 0;
+  padding: 0 0 1em 0;
 }
 .small-img {
   width: 48vw;

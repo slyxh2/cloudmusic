@@ -39,7 +39,7 @@
 <script>
 export default {
   created () {
-    console.log('home')
+    //console.log('home')
   },
   updated () {
     if (window.sessionStorage.getItem('activeIndex')) {

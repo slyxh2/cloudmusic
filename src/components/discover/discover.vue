@@ -25,28 +25,35 @@
       </div>
     </div>
     <!-- 独家放送 -->
-    <div class="small-title">
-      <span style="color: #717ff9; font-size: 1.2em">独家放送</span>
-      <van-icon name="arrow"
-                color="#717ff9" />
+    <div class="special">
+      <div class="small-title">
+        <span style="color: #717ff9; font-size: 1.2em;">独家放送</span>
+        <van-icon name="arrow"
+                  color="#717ff9" />
+      </div>
+      <special></special>
     </div>
-    <special></special>
+
+    <!-- 推荐MV -->
+    <mv></mv>
   </div>
 </template>
 
 <script>
 import special from './special.vue'
+import mv from './mv.vue'
 export default {
   name: 'discover',
   activated () {
     //console.log('acs')
   },
   components: {
-    'special': special
+    'special': special,
+    'mv': mv
   },
   created () {
     this.isFirstEnter = true
-    console.log('created')
+    //console.log('created')
   },
   mounted () {
     this.getImg()
@@ -112,5 +119,8 @@ export default {
 }
 #recommand {
   width: 33.3333%;
+}
+.special {
+  padding: 1em 0 0 0;
 }
 </style>
