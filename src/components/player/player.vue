@@ -4,7 +4,8 @@
     <audio controls="controls"
            id="player"
            :src="songURL"
-           autoplay></audio>
+           autoplay
+           @timeupdate="timeUpdate"></audio>
   </div>
 </template>
 
@@ -35,6 +36,9 @@ export default {
       } else {
         player.pause()
       }
+    },
+    timeUpdate (e) {
+      this.$store.commit('setCurrentTime', e.target.currentTime)
     }
   }
 

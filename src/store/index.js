@@ -10,7 +10,8 @@ export default new Vuex.Store({
     isPlaying: true,
     songId: '33894312',
     songList: [],
-    songIndex: 0
+    songIndex: 0,
+    currentTime: 0
   },
   getters: {
     getListId(state){
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     },
     getNextSong(state){
       return state.songList[state.songIndex]
+    },
+    getCurrentTime(state){
+      return state.currentTime
     }
   },
   mutations: {
@@ -54,6 +58,9 @@ export default new Vuex.Store({
     },
     setSongList(state, songList){
       state.songList = songList
+    },
+    setCurrentTime(state, time){
+      state.currentTime = time
     }
   }
 })

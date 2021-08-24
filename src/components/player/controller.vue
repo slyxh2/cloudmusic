@@ -26,9 +26,15 @@
       <img :src="songInf[0].al.picUrl"
            class="cover-image">
     </div>
-    <div class="control-bar">
+    <div>
+      <span>{{currentTime | formatTime}}</span>
+      <div>{{songInf[0].dt | formatDuration}}</div>
+    </div>
+    <div class="control-bar"
+         v-if="flag">
       <img src="../../assets/last.png"
-           class="next-last">
+           class="next-last"
+           @click="lastSong">
       <img src="../../assets/play.png"
            class="play"
            @click="play"
@@ -52,7 +58,9 @@ export default {
   },
   data () {
     return {
-      songInf: []
+      songInf: [],
+      flag: true,
+      trigger: 1
     }
   },
   computed: {
@@ -62,6 +70,30 @@ export default {
     },
     isPlay () {
       return this.$store.getters.getPlayState
+    },
+    currentTime () {
+      return this.$store.getters.getCurrentTime
+    }
+  },
+  watch: {
+    trigger () {
+      this.$nextTick(() => {
+        this.flag = true
+        this.getSongInf()
+      })
+    }
+  },
+  filters: {
+    formatTime (e) {
+      e = Math.floor(e)
+      const min = Math.floor(e / 60)
+      const sec = e % 60 + ''
+      const nSec = sec.padStart(2, '0')
+      return `${min}:${nSec}`
+    },
+    formatDuration (e) {
+      var time = new Date(e)
+      return `${time.getMinutes()}:${time.getSeconds()}`
     }
   },
   methods: {
@@ -78,15 +110,28 @@ export default {
       this.$router.go(-1)
     },
     nextSong () {
-      //const nextSong = this.$store.getters.getNextSong
-      const newIndex = this.$store.getters.getSongIndex + 1
-      this.$store.commit('setSongIndex', newIndex)
+      this.trigger += 1
       const list = this.$store.getters.getSongList
+      var newIndex = this.$store.getters.getSongIndex + 1
+      if (newIndex === list.length) {
+        newIndex = 0
+      }
+      this.$store.commit('setSongIndex', newIndex)
+      const nextSong = list[newIndex]
+      this.$store.commit('setSongId', nextSong)
+    },
+    lastSong () {
+      this.trigger += 1
+      const list = this.$store.getters.getSongList
+      var newIndex = this.$store.getters.getSongIndex - 1
+      if (newIndex < 0) {
+        newIndex = list.length
+      }
+      this.$store.commit('setSongIndex', newIndex)
       const nextSong = list[newIndex]
       this.$store.commit('setSongId', nextSong)
     }
   }
-
 }
 </script>
 
