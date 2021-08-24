@@ -53,10 +53,9 @@ export default {
     },
     playSong (song, index) {
       this.$store.commit('setSongId', song.songs[0].id)
-      //window.sessionStorage.setItem('songId', song.songs[0].id)
       this.$store.commit('setSongList', this.idList)
       this.$store.commit('setSongIndex', index)
-
+      this.$store.commit('setDurationTime', song.songs[0].dt)
       this.$router.push('/player')
     }
   }

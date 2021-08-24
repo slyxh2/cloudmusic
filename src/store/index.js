@@ -11,7 +11,10 @@ export default new Vuex.Store({
     songId: '33894312',
     songList: [],
     songIndex: 0,
-    currentTime: 0
+    currentTime: 0,
+    durationTime: '',
+    isChanging: false,
+    newTime: 0
   },
   getters: {
     getListId(state){
@@ -25,7 +28,6 @@ export default new Vuex.Store({
     },
     getSongId(state){
       return state.songId
-      //return window.sessionStorage.getItem('songId')
     },
     getSongList(state){
       return state.songList
@@ -38,6 +40,15 @@ export default new Vuex.Store({
     },
     getCurrentTime(state){
       return state.currentTime
+    },
+    getDurationTime(state){
+      return state.durationTime
+    },
+    getChangeState(state){
+      return state.isChanging
+    },
+    getNewTime(state){
+      return state.newTime
     }
   },
   mutations: {
@@ -61,6 +72,15 @@ export default new Vuex.Store({
     },
     setCurrentTime(state, time){
       state.currentTime = time
+    },
+    setDurationTime(state, time){
+      state.durationTime = time
+    },
+    changeState(state){
+      state.isChanging = !state.isChanging
+    },
+    setNewTime(state, time){
+      state.newTime = time
     }
   }
 })

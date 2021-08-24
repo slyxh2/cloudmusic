@@ -26,9 +26,10 @@
       <img :src="songInf[0].al.picUrl"
            class="cover-image">
     </div>
-    <div>
-      <span>{{currentTime | formatTime}}</span>
-      <div>{{songInf[0].dt | formatDuration}}</div>
+    <div class="timer">
+      <div style="padding: 0 0.3em 0 0">{{currentTime | formatTime}}</div>
+      <progress-bar></progress-bar>
+      <div style="padding: 0 0 0 0.3em">{{songInf[0].dt | formatDuration}}</div>
     </div>
     <div class="control-bar"
          v-if="flag">
@@ -52,7 +53,12 @@
 </template>
 
 <script>
+import bar from './progress-bar.vue'
+
 export default {
+  components: {
+    'progress-bar': bar
+  },
   created () {
     this.getSongInf()
   },
@@ -93,7 +99,9 @@ export default {
     },
     formatDuration (e) {
       var time = new Date(e)
-      return `${time.getMinutes()}:${time.getSeconds()}`
+      const sec = time.getSeconds() + ''
+      const nSec = sec.padStart(2, '0')
+      return `${time.getMinutes()}:${nSec}`
     }
   },
   methods: {
@@ -171,5 +179,10 @@ export default {
 .play {
   width: 20%;
   transform: translateY(10%);
+}
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 </style>

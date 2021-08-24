@@ -18,15 +18,25 @@ export default {
     },
     songURL () {
       return `https://music.163.com/song/media/outer/url?id=${this.$store.getters.getSongId}.mp3`
+    },
+    currentTime () {
+      return this.$store.getters.getCurrentTime
+    },
+    isChanging () {
+      return this.$store.getters.getChangeState
     }
   },
   watch: {
     isPlay () {
       this.playSong()
+    },
+    isChanging () {
+      var player = document.getElementById('player')
+      player.pause()
+      const newTime = this.$store.getters.getNewTime
+      player.currentTime = newTime
+      player.play()
     }
-  },
-  mounted () {
-    // console.log(this.isPlay)
   },
   methods: {
     playSong () {
