@@ -5,9 +5,10 @@
       <van-swipe-item v-for="(image, index) in swipeImg"
                       :key="index">
         <img v-lazy="image"
-             width="100%" />
+             class="swipe-img" />
       </van-swipe-item>
     </van-swipe>
+    <div class="blank"></div>
     <!-- 推荐歌单 -->
     <div class="small-title">
       <span style="color: #717ff9; font-size: 1.2em">推荐歌单</span>
@@ -88,6 +89,12 @@ export default {
 </script>
 
 <style>
+.van-swipe {
+  position: absolute;
+  top: 2.8em;
+  width: 100vw;
+  height: 22vh;
+}
 .recommand-container {
   height: 20em;
   width: 100%;
@@ -101,18 +108,7 @@ export default {
   display: inline-block;
   color: #717ff9;
 }
-.van-swipe {
-  position: absolute;
-  top: -3em;
-}
-.van-swipe__track {
-  height: 9.8em !important;
-  padding: 0;
-  margin: 0;
-}
-.van-swipe__indicators {
-  bottom: 1em !important;
-}
+
 .recommandImg {
   width: 8em;
   height: 8em;
@@ -122,5 +118,14 @@ export default {
 }
 .special {
   padding: 1em 0 0 0;
+}
+.blank {
+  width: 100vw;
+  height: 25vh;
+  background-color: #fff;
+}
+.swipe-img {
+  width: 100vw;
+  height: 22vh;
 }
 </style>

@@ -7,6 +7,7 @@ module.exports = {
       libraryName: 'vant',
       libraryDirectory: 'es',
       style: (name) => `${name}/style/less`
-    }, 'vant']
+    }, 'vant'],
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

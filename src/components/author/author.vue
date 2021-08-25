@@ -2,8 +2,11 @@
   <div id="author">
     <h1 style="text-align: center">联 系 作 者</h1>
     <div class="top">
-      <img src="../../assets/author.jpg"
-           class="avatar">
+      <!-- <img src="../../assets/author.jpg"
+           class="avatar"> -->
+      <a href="https://sm.ms/image/sP6H5WfjDgO7xoy"
+         target="_blank"><img src="https://i.loli.net/2021/08/25/sP6H5WfjDgO7xoy.jpg"
+             class="avatar"></a>
       <h3>Patrick Huang</h3>
     </div>
     <div class="contact">
@@ -27,9 +30,14 @@
       </a>
     </div>
     <div class="QR-container">
-      <img src="../../assets/QR.png"
+      <!-- <img src="../../assets/QR.png"
            class="QR"
-           v-if="flag">
+           v-if="flag"> -->
+      <a href="https://sm.ms/image/pfklUGuNxhywHM1"
+         target="_blank"><img src="https://i.loli.net/2021/08/25/pfklUGuNxhywHM1.png"
+             alt="QR.png"
+             class="QR"
+             v-if="flag"></a>
     </div>
 
   </div>

@@ -148,6 +148,7 @@ export default {
 <style lang="less" scoped>
 #user {
   padding-bottom: 4em;
+  padding-top: 3em;
 }
 .avatar {
   width: 6em;

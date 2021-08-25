@@ -1,14 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import home from '../components/home.vue'
-import search from '../components/search/search.vue'
-import login from '../components/user/login.vue'
-import mobileLogin from '../components/user/mobile_login'
-import discover from '../components/discover/discover.vue'
-import list from '../components/discover/list.vue'
-import video from '../components/discover/video.vue'
-import player from '../components/player/controller.vue'
-import user from '../components/user/user.vue'
+//import home from '../components/home.vue'
+const home = () => import(/* webpackChunkName: "g1" */ '../components/home.vue')
+//import search from '../components/search/search.vue'
+const search = () => import(/* webpackChunkName: "g1" */ '../components/search/search.vue')
+//import login from '../components/user/login.vue'
+const login = () => import(/* webpackChunkName: "g1" */ '../components/user/login.vue')
+//import mobileLogin from '../components/user/mobile_login'
+const mobileLogin = () => import(/* webpackChunkName: "g2" */ '../components/user/mobile_login')
+//import discover from '../components/discover/discover.vue'
+const discover = () => import(/* webpackChunkName: "g2" */ '../components/discover/discover.vue')
+//import list from '../components/discover/list.vue'
+const list = () => import(/* webpackChunkName: "g2" */ '../components/discover/list.vue')
+//import video from '../components/discover/video.vue'
+const video = () => import(/* webpackChunkName: "g3" */ '../components/discover/video.vue')
+//import player from '../components/player/controller.vue'
+const player = () => import(/* webpackChunkName: "g3" */ '../components/player/controller.vue')
+//import user from '../components/user/user.vue'
+const user = () => import(/* webpackChunkName: "g2" */ '../components/user/user.vue')
+
 Vue.use(VueRouter)
 
 const routes = [
