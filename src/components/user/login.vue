@@ -7,16 +7,16 @@
                 hairline
                 :block="true"
                 to="mobile">手机登录</van-button>
-    <van-button round
-                type="info"
-                plain
-                hairline
-                :block="true">注册</van-button>
     <span class="guest"
           @click="guestIn">游客进入
       <van-icon name="arrow" />
       <van-icon name="arrow" />
     </span>
+    <div class="intro">
+      <span>此项目数据基于网易云音乐，您可以登录您的网易云帐号</span>
+      <span>仅供学习！！！</span>
+    </div>
+
   </div>
 </template>
 
@@ -56,5 +56,9 @@ div {
   cursor: pointer;
   margin-top: 2em;
   font-size: 0.9em;
+}
+.intro {
+  padding-top: 1em;
+  color: #717ff9;
 }
 </style>
