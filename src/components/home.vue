@@ -5,7 +5,8 @@
       <template #left>
         <van-icon name="more-o"
                   size="20"
-                  color="#fff" />
+                  color="#fff"
+                  @click="showAuthor" />
       </template>
       <template #right>
         <van-icon name="bullhorn-o"
@@ -33,10 +34,18 @@
       <van-tabbar-item icon="setting-o"
                        to="/user">帐号</van-tabbar-item>
     </van-tabbar>
+    <van-overlay :show="show"
+                 @click="show = false">
+      <div class="wrapper"
+           @click.stop>
+        <author></author>
+      </div>
+    </van-overlay>
   </div>
 </template>
 
 <script>
+import author from './author/author.vue'
 export default {
   created () {
     //console.log('home')
@@ -48,9 +57,13 @@ export default {
       this.active = 0
     }
   },
+  components: {
+    'author': author
+  },
   data () {
     return {
-      active: 0
+      active: 0,
+      show: false
     }
   },
   methods: {
@@ -59,17 +72,15 @@ export default {
     },
     goPlayer () {
       this.$router.push('/player')
+    },
+    showAuthor () {
+      this.show = true
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-iframe {
-  position: fixed;
-  bottom: 3em;
-  margin: auto;
-}
 .van-tabbar {
   background-color: #717ff9;
 }

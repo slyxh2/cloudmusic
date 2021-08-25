@@ -88,4 +88,7 @@ export default {
 .song-container {
   padding: 0.5em 0 0 0;
 }
+.song-block:hover {
+  background-color: aliceblue;
+}
 </style>

@@ -106,7 +106,7 @@ export default {
 <style lang="less" scoped>
 .song-list {
   position: absolute;
-  top: 35%;
+  top: 100%;
   width: 100%;
 }
 .top-body {

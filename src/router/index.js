@@ -14,16 +14,16 @@ Vue.use(VueRouter)
 const routes = [
   {path: '/', redirect: '/login'},
 
-  {path: '/home', component: home, redirect: '/discover', name: 'home', meta:{keepAlive: true},
-  children: [{path: '/discover', component: discover, name: 'discover', meta:{keepAlive: true, isBack: false}}, 
-  {path: '/search', component: search, name: 'search', meta:{keepAlive: true, isBack: false}},
-  {path: '/user', component: user, name: 'user', meta:{keepAlive: true, isBack: true, ls: false}}]},
+  {path: '/home', component: home, redirect: '/discover', name: 'home', meta:{keepAlive: true, index: 3},
+  children: [{path: '/discover', component: discover, name: 'discover', meta:{keepAlive: true, isBack: false, index: 3}}, 
+  {path: '/search', component: search, name: 'search', meta:{keepAlive: true, isBack: false, index: 3}},
+  {path: '/user', component: user, name: 'user', meta:{keepAlive: true, isBack: true, ls: false, index: 3}}]},
 
-  {path: '/login', component: login, meta:{keepAlive: false}},
-  {path: '/mobile', component: mobileLogin, name:'mobile'},
-  {path: '/list', component: list, name: 'list', meta:{keepAlive: true, isBack: false, list: true}}, 
-  {path: '/video', component: video},
-  {path: '/player', component: player, name: 'player'}
+  {path: '/login', component: login, meta:{keepAlive: false, index: 1}},
+  {path: '/mobile', component: mobileLogin, name:'mobile', meta: {index: 2}},
+  {path: '/list', component: list, name: 'list', meta:{keepAlive: true, isBack: false, list: true, meta:{index: 4}}}, 
+  {path: '/video', component: video, meta:{index: 4}},
+  {path: '/player', component: player, name: 'player', meta:{index: 4}}
 ]
 
 const router = new VueRouter({
