@@ -48,17 +48,29 @@
 import author from './author/author.vue'
 export default {
   created () {
-    //console.log('home')
-  },
-  updated () {
-    if (window.sessionStorage.getItem('activeIndex')) {
-      this.active = parseInt(window.sessionStorage.getItem('activeIndex'))
-    } else {
+    console.log(this.$route.name)
+    if (this.$route.name === 'discover') {
       this.active = 0
+    } else if (this.$route.name === 'search') {
+      this.active = 1
+    } else {
+      this.active = 2
     }
   },
   components: {
     'author': author
+  },
+  watch: {
+    $route (to, from) {
+      //console.log(from.name)
+      if (to.name === 'discover') {
+        this.active = 0
+      } else if (to.name === 'search') {
+        this.active = 1
+      } else {
+        this.active = 2
+      }
+    }
   },
   data () {
     return {
